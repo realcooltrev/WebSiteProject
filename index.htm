@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      Author: Trevor Pierce
+      Date: 11/25/17   
+      Description: Final Project, a website that allows for a user to 
+                   order contacts
+
+      Filename: index.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Contact Us For Contacts</title>
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <form id="haveprescription">
+        Do you know your prescription?<br>
+        <input type="radio" name="prescription" value="yes" id="havescript">Yes<br>
+        <input type="radio" name="prescription" value="no" id ="noscript">No<br>
+    </form>
+    <select name="contacttype" id="contacttype">
+        <option value=""></option>
+        <option value="dailies">Dailies</option>
+        <option value="weeklies">Weeklies</option>
+        <option value="monthlies">Monthlies</option>
+    </select>
+    <form id="orderinfo">
+        First Name:
+        <input type="text" id="firstname" class="orderdetail" name="firstname"><br>
+        Last Name:
+        <input type="text" id="lastname" class="orderdetail" name="lastname"><br>
+        Street Address:
+        <input type="text" id="street" class="orderdetail" name="street"><br>
+        City: 
+        <input type="text" id="city" class="orderdetail" name="city"><br>
+        State:
+        <input type="text" id="state" class="orderdetail" name="state"><br>
+        ZIP:
+        <input type="text" id="zip" class="orderdetail" name="zip"><br>
+        Left Eye Prescription:
+        <select name="lefteye" id="lefteye">
+            <option value="+7.00">+7.00</option>
+            <option value="+6.00">+6.00</option>
+            <option value="+5.00">+5.00</option>
+            <option value="+4.00">+4.00</option>
+            <option value="+3.00">+3.00</option>
+            <option value="+2.00">+2.00</option>
+            <option value="+1.00">+1.00</option>
+            <option value="-1.00">-1.00</option>
+            <option value="-2.00">-2.00</option>
+            <option value="-3.00">-3.00</option>
+            <option value="-4.00">-4.00</option>
+            <option value="-5.00">-5.00</option>
+            <option value="-6.00">-6.00</option>
+            <option value="-7.00">-7.00</option>
+        </select>
+        <br>
+        Right Eye Prescription:
+        <select name="righteye" id="righteye">
+            <option value="+7.00">+7.00</option>
+            <option value="+6.00">+6.00</option>
+            <option value="+5.00">+5.00</option>
+            <option value="+4.00">+4.00</option>
+            <option value="+3.00">+3.00</option>
+            <option value="+2.00">+2.00</option>
+            <option value="+1.00">+1.00</option>
+            <option value="-1.00">-1.00</option>
+            <option value="-2.00">-2.00</option>
+            <option value="-3.00">-3.00</option>
+            <option value="-4.00">-4.00</option>
+            <option value="-5.00">-5.00</option>
+            <option value="-6.00">-6.00</option>
+            <option value="-7.00">-7.00</option>
+        </select>
+        <br>
+        <input type="button" value="Submit Order" id="submitorder"><br>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
