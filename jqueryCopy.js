@@ -128,6 +128,11 @@ var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
 
 (function($) {
     $.fn.checkOrder = function() {
+        $("table").remove();
+        $("#orderinfo").show();
+        $("#haveprescription").remove();
+        $("#contacttype").remove();
+        
         var $formValidity = false;
         var $details = $(".orderdetails")
         var $state = $details[4];
@@ -179,13 +184,11 @@ $(function() {
         $.fn.setTables();
     });
 
-    $(".orderbutton").click(function() {
-        // Get order total from button
-        $("table").remove();
-        $("#orderinfo").show();
+    $(document).on("click", ".orderbutton", function(){
+        $.fn.checkOrder();
     });
 
-    $("#submitorder").click(function() {
+    $(document).on("click", "#submitorder", function() {
         $.fn.checkOrder();
     });
 });
