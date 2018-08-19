@@ -127,46 +127,51 @@ var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
 }(jQuery));
 
 (function($) {
-    $.fn.checkOrder = function() {
+    $.fn.prepareOrderForm = function() {
         $("table").remove();
         $("#orderinfo").show();
         $("#haveprescription").remove();
         $("#contacttype").remove();
-        
+    };
+}(jQuery));
+
+(function($) {   
+    $.fn.checkOrder = function() {     
+        console.log("In checkOrder");
         var $formValidity = false;
-        var $details = $(".orderdetails")
+        var $details = $(".orderdetail").toArray();
         var $state = $details[4];
         var $zip = $details[5];
         var $zipMatch = /\d\d\d\d\d/;
 
-        for ($detail in $details) {
-            if ($detail.val() === "") {
-                $detail.css("background", "red");
+       for ($detail in $details) {
+           if ($($details[$detail]).length < 1) {
+                $($details[$detail]).addClass("error");
                 $formValidity = false;
             } else {
-                $detail.css("background", "");
+                $($details[$detail]).addClass("goodinput");
                 $formValidity = true;
             }
         }
 
         if ($states.indexOf($state) == -1) {
-            $state.css("background", "red");
+            $($states).addClass("error");
             $formValidity = false;
         } else {
-            $state.css("background", "");
+            $($states).addClass("goodinput");
             $formValidity = true;
         }
 
         if ($zipMatch.test($zip)) {
-            $zip.css("background", "");
+            $($zip).toggleClass("goodinput");
             $formValidity = true;
         } else {
-            $zip.css("background", "red");
+            $($zip).toggleClass("error");
             $formValidity = false;
         }
 
         // If the form is not valid, an alert is displayed. If valid, then the order is submitted
-        if (formValidity === false) {
+        if ($formValidity === false) {
             alert("Please correct the highlighted fields");
         } else {
             alert("Your order has been placed and should arrive at your given address in 5-7 business days!\nYour total price is ");
@@ -185,7 +190,7 @@ $(function() {
     });
 
     $(document).on("click", ".orderbutton", function(){
-        $.fn.checkOrder();
+        $.fn.prepareOrderForm();
     });
 
     $(document).on("click", "#submitorder", function() {

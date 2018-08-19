@@ -24,8 +24,16 @@ table {
 
 #contacttype {
      display: none;
- }
+}
  
- #orderinfo {
+#orderinfo {
      display: none;
- }
+}
+
+.error {
+    border-color: firebrick;
+}
+
+.goodinput {
+    border-color: seagreen;
+}
