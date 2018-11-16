@@ -10,25 +10,25 @@
 // Define the 2D arrays that store all of the information for the contacts/doctors
 //
 // Normally. this would be in a database
-var $contactColumns = ["Brand", "Style", "Price"];
-var $doctorColumns = ["Name", "Phone #"];
-var $dailies = [["Acuvue", "Moist", 56],
+var contactColumns = ["Brand", "Style", "Price"];
+var doctorColumns = ["Name", "Phone #"];
+var dailies = [["Acuvue", "Moist", 56],
                ["Alcon", "AquaComfort Plus", 52],
                ["Bausch + Lomb", "ONEDay", 45],
                ["CooperVision", "Clarity", 60]];
-var $weeklies = [["Acuvue", "Oasys", 60],
+var weeklies = [["Acuvue", "Oasys", 60],
                 ["Bausch + Lomb", "SofLens", 58],
                 ["CooperVision", "Avaira", 56]];
-var $monthlies = [["Acuvue", "Vita", 52],
+var monthlies = [["Acuvue", "Vita", 52],
                  ["Alcon", "Air Optix", 48.00],
                  ["Bausch + Lomb", "Ultra", 42],
                  ["CooperVision", "Biofininity", 52]];
 
-var $doctors = [["Pearle Vision", "812-332-9014"],
+var doctors = [["Pearle Vision", "812-332-9014"],
                ["Brinegar Eye Care", "812-339-7995"],
                ["Hoosier Eye Doctor", "812-333-2020"],
                ["Precision Eye Group", "812-332-2020"]];
-var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
+var states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
                 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 
                 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 
                 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 
@@ -41,11 +41,11 @@ var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
 // This function sees if a user has a prescription or not
 (function($) {
     $.fn.askForPrescription = function() {
-        var $scriptChoice = $("input[type='radio'][name='prescription']:checked");
+        var scriptChoice = $("input[type='radio'][name='prescription']:checked");
         
-        if ($scriptChoice.attr("id") === "havescript") {
+        if (scriptChoice.attr("id") === "havescript") {
             $("#contacttype").show();
-        } else if ($scriptChoice.attr("id") === "noscript") {
+        } else if (scriptChoice.attr("id") === "noscript") {
             $.fn.setTables();
         } else {
             alert("You need to make a choice, first!");
@@ -59,43 +59,43 @@ var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
     $.fn.setTables = function() {
         $("table").remove();
 
-        var $currentTable = $("<table>");
-        var $currentHeaders = "";
-        var $currentData = "";
-        var $scriptChoice = $("input[type='radio'][name='prescription']:checked");
+        var currentTable = $("<table>");
+        var currentHeaders = "";
+        var currentData = "";
+        var scriptChoice = $("input[type='radio'][name='prescription']:checked");
 
-        if ($scriptChoice.attr("id") === "havescript") {
-            $currentHeaders = $contactColumns;
-            $currentData = $.fn.getContactType();
+        if (scriptChoice.attr("id") === "havescript") {
+            currentHeaders = contactColumns;
+            currentData = $.fn.getContactType();
         } else {
             $("#contacttype").hide();
-            $currentHeaders = $doctorColumns
-            $currentData = $doctors;
+            currentHeaders = doctorColumns
+            currentData = doctors;
         }
         
-        var $headers = $("<tr>");
+        var headers = $("<tr>");
         
-        for ($header in $currentHeaders) {
-            $($headers).append("<th>" + $currentHeaders[$header] + "</th>");
+        for (header in currentHeaders) {
+            $(headers).append("<th>" + currentHeaders[header] + "</th>");
         }
 
-        $($currentTable).append($headers);
+        $(currentTable).append(headers);
 
-        for ($row in $currentData) {
-            var $newRow = $("<tr>");
+        for (row in currentData) {
+            var newRow = $("<tr>");
 
-            for ($item in $currentData[$row]) {
-                $($newRow).append("<td>" + $currentData[$row][$item] + "</td>");
+            for (item in currentData[row]) {
+                $(newRow).append("<td>" + currentData[row][item] + "</td>");
             }
             
-            if ($scriptChoice.attr("id") === "havescript") {
-                $($newRow).append("<td><button class='orderbutton' value='$currentData[$row][2]'>Order</button></td>");
+            if (scriptChoice.attr("id") === "havescript") {
+                $(newRow).append("<td><button class='orderbutton' value='$currentData[$row][2]'>Order</button></td>");
             }
 
-            $($currentTable).append($newRow);
+            $(currentTable).append(newRow);
         }
 
-        $("#contacttype").after($currentTable);
+        $("#contacttype").after(currentTable);
 
     } 
 }(jQuery));
@@ -105,59 +105,68 @@ var $states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
 // contacts to show
 (function($) {
     $.fn.getContactType = function() {
-        var $contactType = $("#contacttype").val();
-        var $chosenType = "";
+        var contactType = $("#contacttype").val();
+        var chosenType = "";
 
-        switch ($contactType) {
+        switch (contactType) {
             case "dailies":
-                $chosenType = $dailies;
+                chosenType = dailies;
                 break;
             case "weeklies":
-                $chosenType = $weeklies;
+                chosenType = weeklies;
                 break;
             case "monthlies":
-                $chosenType = $monthlies;
+                chosenType = monthlies;
                 break;
             case "NULL":
                 break;
         }
 
-        return $chosenType;
+        return chosenType;
     };
 }(jQuery));
 
 (function($) {
-    $.fn.checkOrder = function() {
-        var $formValidity = false;
-        var $details = $(".orderdetails")
-        var $state = $details[4];
-        var $zip = $details[5];
-        var $zipMatch = /\d\d\d\d\d/;
+    $.fn.prepareOrderForm = function() {
+        $("table").remove();
+        $("#orderinfo").show();
+        $("#haveprescription").remove();
+        $("#contacttype").remove();
+    };
+}(jQuery));
 
-        for ($detail in $details) {
-            if ($detail.val() === "") {
-                $detail.css("background", "red");
-                $formValidity = false;
+(function($) {   
+    $.fn.checkOrder = function() {     
+        var formValidity = false;
+        var orderDetails = $(".orderdetail").toArray();;
+        var state = $("#state").val();
+        var zip = $("#zip").val();
+        var zipMatch = /\b\d{5}\b/;
+
+        for (i in orderDetails) {
+            if (orderDetails[i].value.length < 1) {
+                $("#" + orderDetails[i].id).removeClass("goodinput").addClass("error");
+                formValidity = false;
             } else {
-                $detail.css("background", "");
-                $formValidity = true;
+                $("#" + orderDetails[i].id).removeClass("error").addClass("goodinput");
+                formValidity = true;
             }
         }
-
-        if ($states.indexOf($state) == -1) {
-            $state.css("background", "red");
-            $formValidity = false;
+         
+        if (states.indexOf(state) == -1) {
+            $("#state").removeClass("goodinput").addClass("error");
+            formValidity = false;
         } else {
-            $state.css("background", "");
-            $formValidity = true;
+            $("#state").removeClass("error").addClass("goodinput");
+            formValidity = true;
         }
 
-        if ($zipMatch.test($zip)) {
-            $zip.css("background", "");
-            $formValidity = true;
+        if (zipMatch.test(zip)) {
+            $("#zip").removeClass("error").addClass("goodinput");
+            formValidity = true;
         } else {
-            $zip.css("background", "red");
-            $formValidity = false;
+            $("#zip").removeClass("goodinput").addClass("error");
+            formValidity = false;
         }
 
         // If the form is not valid, an alert is displayed. If valid, then the order is submitted
@@ -179,13 +188,11 @@ $(function() {
         $.fn.setTables();
     });
 
-    $(".orderbutton").click(function() {
-        // Get order total from button
-        $("table").remove();
-        $("#orderinfo").show();
+    $(document).on("click", ".orderbutton", function(){
+        $.fn.prepareOrderForm();
     });
 
-    $("#submitorder").click(function() {
+    $(document).on("click", "#submitorder", function() {
         $.fn.checkOrder();
     });
 });
