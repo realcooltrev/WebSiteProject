@@ -12,11 +12,11 @@ body {
     width: 100%;
 }     
 
-label {
+/*label {
     display: inline-block;
     width: 160px;
     text-align: right;
-}
+}*/
 
 table {
     margin: 0 auto;
