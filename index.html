@@ -10,13 +10,17 @@
   </head>
   <body>
     <form id="haveprescription">
-      <p>Do you know your prescription?</p>
-      <input type="radio" name="prescription" value="yes" id="havescript">
-      <label for="havescript">Yes</label>
-      <br>
-      <input type="radio" name="prescription" value="no" id ="noscript">
-      <label for="noscript">No</label>
-      <br>
+      <fieldset>
+        <legend>Do you know your prescription?</legend>
+        <div>
+          <input type="radio" name="prescription" value="yes" id="havescript">
+          <label for="havescript">Yes</label>
+        </div>
+        <div>
+          <input type="radio" name="prescription" value="no" id ="noscript">
+          <label for="noscript">No</label>
+        </div>
+      </fieldset>
     </form>
     <select name="contacttype" id="contacttype">
       <option value="">--Please choose an option--</option>
@@ -27,34 +31,52 @@
     <form id="orderinfo">
       <h1>Order Information</h1>
       <p>
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" class="orderdetail" name="firstname">
+        <label for="firstname">
+          First Name:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="text" id="firstname" class="orderdetail" name="firstname">
+        </label>
         <br>
       </p>
       <p>
-        <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" class="orderdetail" name="lastname">
-        <br>
+        <label for="lastname">
+          Last Name:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="text" id="lastname" class="orderdetail" name="lastname">
+          <br>
+        </label>
       </p>
       <p>
-        <label for="street">Street Address:</label>
-        <input type="text" id="street" class="orderdetail" name="street">
-        <br>
+        <label for="street">
+          Street Address:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="text" id="street" class="orderdetail" name="street">
+          <br>
+        </label>
       </p>
       <p>
-        <label for="city">City:</label>
-        <input type="text" id="city" class="orderdetail" name="city">
-        <br>
+        <label for="city">
+          City:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="text" id="city" class="orderdetail" name="city">
+          <br>
+        </label>
       </p>
       <p>
-        <label for="state">State:</label>
-        <input type="text" id="state" class="orderdetail" name="state">
-        <br>
+        <label for="state">
+          State:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="text" id="state" class="orderdetail" name="state">
+          <br>
+        </label>
       </p>
       <p>
-        <label for="zip">ZIP:</label>
-        <input type="number" id="zip" class="orderdetail" name="zip">
-        <br>
+        <label for="zip">
+          ZIP:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="number" id="zip" class="orderdetail" name="zip">
+          <br>
+        </label>
       </p>
       <p>
         <label for="lefteye">Left Eye Prescription:</label>
