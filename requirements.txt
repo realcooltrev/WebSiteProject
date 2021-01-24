@@ -1,0 +1,16 @@
+aiofiles==0.6.0
+astroid @ file:///tmp/build/80754af9/astroid_1607714509910/work
+certifi==2020.12.5
+click==7.1.2
+fastapi==0.63.0
+h11==0.12.0
+isort @ file:///tmp/build/80754af9/isort_1602603989581/work
+lazy-object-proxy @ file:///tmp/build/80754af9/lazy-object-proxy_1607707328286/work
+mccabe==0.6.1
+pydantic==1.7.3
+pylint @ file:///tmp/build/80754af9/pylint_1607716683547/work
+six @ file:///tmp/build/80754af9/six_1605205306277/work
+starlette==0.13.6
+toml @ file:///tmp/build/80754af9/toml_1592853716807/work
+uvicorn==0.13.3
+wrapt @ file:///tmp/build/80754af9/wrapt_1607712509268/work
