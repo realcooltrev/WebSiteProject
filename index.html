@@ -3,46 +3,58 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
     <title>Contact Us For Contacts</title>
     <link rel="stylesheet" href="style.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <form id="haveprescription">
+    <form id="prescription">
       <fieldset>
         <legend>Do you know your prescription?</legend>
         <div>
-          <input type="radio" name="prescription" value="yes" id="havescript">
-          <label for="havescript">Yes</label>
+          <input type="radio" name="prescription_choice" value="yes" id="have_prescription">
+          <label for="have_prescription">Yes</label>
         </div>
         <div>
-          <input type="radio" name="prescription" value="no" id ="noscript">
-          <label for="noscript">No</label>
+          <input type="radio" name="prescription_choice" value="no" id ="no_prescription">
+          <label for="no_prescription">No</label>
         </div>
       </fieldset>
     </form>
-    <select name="contacttype" id="contacttype">
-      <option value="">--Please choose an option--</option>
+    <label for="contact_type">Contact Type:</label>
+    <select name="contact_type" id="contact_type" class="hidden">
       <option value="dailies">Dailies</option>
       <option value="weeklies">Weeklies</option>
       <option value="monthlies">Monthlies</option>
     </select>
-    <form id="orderinfo">
+    <form id="order_info">
       <h1>Order Information</h1>
       <p>
-        <label for="firstname">
+        <label for="first_name">
           First Name:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="text" id="firstname" class="orderdetail" name="firstname">
+          <input type="text" id="first_name" class="order_detail" name="first_name">
         </label>
         <br>
       </p>
       <p>
-        <label for="lastname">
+        <label for="last_name">
           Last Name:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="text" id="lastname" class="orderdetail" name="lastname">
+          <input type="text" id="last_name" class="order_detail" name="last_name">
+          <br>
+        </label>
+      </p>
+      <p>
+        <label for="email_address">
+          Email Address:
+          <abbr title="required" aria-label="required">*</abbr>
+          <input type="email" id="email_address" class="order_detail" name="email_address">
           <br>
         </label>
       </p>
@@ -50,7 +62,7 @@
         <label for="street">
           Street Address:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="text" id="street" class="orderdetail" name="street">
+          <input type="text" id="street" class="order_detail" name="street">
           <br>
         </label>
       </p>
@@ -58,7 +70,7 @@
         <label for="city">
           City:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="text" id="city" class="orderdetail" name="city">
+          <input type="text" id="city" class="order_detail" name="city">
           <br>
         </label>
       </p>
@@ -66,7 +78,7 @@
         <label for="state">
           State:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="text" id="state" class="orderdetail" name="state">
+          <input type="text" id="state" class="order_detail" name="state">
           <br>
         </label>
       </p>
@@ -74,13 +86,13 @@
         <label for="zip">
           ZIP:
           <abbr title="required" aria-label="required">*</abbr>
-          <input type="number" id="zip" class="orderdetail" name="zip">
+          <input type="number" id="zip" class="order_detail" name="zip">
           <br>
         </label>
       </p>
       <p>
-        <label for="lefteye">Left Eye Prescription:</label>
-        <select name="lefteye" id="lefteye">
+        <label for="left_eye">Left Eye Prescription:</label>
+        <select name="left_eye" id="left_eye">
           <option value="+7.00">+7.00</option>
           <option value="+6.00">+6.00</option>
           <option value="+5.00">+5.00</option>
@@ -99,8 +111,8 @@
         <br>
       </p>
       <p>
-        <Label for="righteye">Right Eye Prescription:</Label>
-        <select name="righteye" id="righteye">
+        <label for="right_eye">Right Eye Prescription:</label>
+        <select name="right_eye" id="right_eye">
           <option value="+7.00">+7.00</option>
           <option value="+6.00">+6.00</option>
           <option value="+5.00">+5.00</option>
@@ -119,7 +131,7 @@
         <br>
       </p>
       <p>
-        <input type="button" value="Submit Order" id="submitorder">
+        <input type="button" value="Submit Order" id="submit_order">
         <br>
       </p>
     </form>

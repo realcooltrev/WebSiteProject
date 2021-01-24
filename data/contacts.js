@@ -7,7 +7,7 @@ class Contact {
   }
 }
 
-const contacts = [
+export const contacts = [
   new Contact('daily', 'Acuvue', 'Moist', 56),
   new Contact('daily', 'Alcon', 'AquaComfort Plus', 52),
   new Contact('daily', 'Bausch + Lomb', 'ONEDay', 45),

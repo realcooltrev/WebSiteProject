@@ -1,4 +1,4 @@
-const states = [
+export const states = [
   'AL', 'AK', 'AZ', 'AR', 'CA',
   'CO', 'CT', 'DE', 'FL', 'GA',
   'HI', 'ID', 'IL', 'IN', 'IA',

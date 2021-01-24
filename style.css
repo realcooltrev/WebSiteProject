@@ -1,6 +1,6 @@
 /* Author: Trevor Pierce
- * Date: 11/26/17   
- * Description: Final Project, a website that allows for a user to 
+ * Date: 11/26/17
+ * Description: Final Project, a website that allows for a user to
                 order contacts
  * Filename:  style.css
  */
@@ -10,13 +10,23 @@ body {
     color: #B44628;
     background: #EFEEEC;
     width: 100%;
-}     
+}
 
-/*label {
-    display: inline-block;
-    width: 160px;
-    text-align: right;
-}*/
+form {
+    margin: 0 auto;
+    width: 500px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
 
 table {
     margin: 0 auto;
@@ -25,7 +35,7 @@ table {
 #contacttype {
      display: none;
 }
- 
+
 #orderinfo {
      display: none;
 }

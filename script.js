@@ -1,28 +1,79 @@
-import contacts from './data/contacts.js';
-import optometrists from './data/optometrists.js';
-import states from './data/states.js';
+/*
+ * import contacts from './data/contacts.js';
+ * import optometrists from './data/optometrists.js';
+ * import states from './data/states.js';
+ */
 
-// Normally. this would be in a database
+// Normally. this would be in a database, but...
+
+class Optometrist {
+  constructor(name, phoneNumber) {
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+  }
+}
+
+const optometrists = [
+  new Optometrist('Pearle Vision', '8123329014'),
+  new Optometrist('Brinegar Eye Care', '8123397995'),
+  new Optometrist('Hoosier Eye Doctor', '8123332020'),
+  new Optometrist('Precision Eye Group', '8123322020'),
+];
+
+
+class Contact {
+  constructor(type, brand, style, price) {
+    this.type = type;
+    this.brand = brand;
+    this.style = style;
+    this.price = price;
+  }
+}
+
+const contacts = [
+  new Contact('daily', 'Acuvue', 'Moist', 56),
+  new Contact('daily', 'Alcon', 'AquaComfort Plus', 52),
+  new Contact('daily', 'Bausch + Lomb', 'ONEDay', 45),
+  new Contact('daily', 'CooperVision', 'Clarity', 60),
+  new Contact('weekly', 'Acuvue', 'Oasys', 60),
+  new Contact('weekly', 'Bausch + Lomb', 'SofLens', 58),
+  new Contact('weekly', 'CooperVision', 'Avaira', 56),
+  new Contact('monthly', 'Acuvue', 'Vita', 52),
+  new Contact('monthly', 'Alcon', 'Air Optix', 48),
+  new Contact('monthly', 'Bausch + Lomb', 'Ultra', 42),
+  new Contact('monthly', 'CooperVision', 'Biofininity', 52)
+];
+
+const states = [
+  'AL', 'AK', 'AZ', 'AR', 'CA',
+  'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA',
+  'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO',
+  'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH',
+  'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT',
+  'VA', 'WA', 'WV', 'WI', 'WY'
+];
 
 // Filter the contacts down to the correct type
 const dailies = contacts.filter(contact => contact.type == 'daily');
 const weeklies = contacts.filter(contact => contact.type == 'monthly');
-const monthlies = contacts.filter(contact => contact.type == 'monthly');
+const monthlies = contacts.filter(contact => contact.type == "monthly");
 
-// This function sees if a user has a prescription or not
-(function ($) {
-  $.fn.askForPrescription = function () {
-    var scriptChoice = $("input[type='radio'][name='prescription']:checked");
+const askForPrescription = (prescriptionChoice) => {
+  // Check if a user has a prescription from an optometrist
+  //let scriptChoice = document.querySelector('input[type="radio"][name="prescription"]:checked');
 
-    if (scriptChoice.attr("id") === "havescript") {
-      $("#contacttype").show();
-    } else if (scriptChoice.attr("id") === "noscript") {
-      $.fn.setTables();
-    } else {
-      alert("You need to make a choice, first!");
-    }
-  };
-}(jQuery));
+  if (prescriptionChoice === 'yes') {
+    $("#contacttype").show();
+  } else if (prescriptionChoice === 'no') {
+    $.fn.setTables();
+  } else {
+    alert("You need to make a choice, first!");
+  }
+}
 
 // This function checks to see what type of table is needed
 // and then creates that table dynamically
@@ -150,21 +201,21 @@ const monthlies = contacts.filter(contact => contact.type == 'monthly');
 }(jQuery));
 
 // Event handlers
-$(function () {
-  $("#haveprescription").change(function () {
-    $.fn.askForPrescription();
-  });
+const prescriptionRadio = document.querySelector('#prescription');
 
-  $("#contacttype").change(function () {
-    $.fn.setTables();
-  });
+prescriptionRadio.addEventListener('change', event => {
+  askForPrescription(event.target.value);
+});
 
-  $(document).on("click", ".orderbutton", function () {
-    $.fn.prepareOrderForm();
-  });
+$("#contacttype").change(function () {
+  $.fn.setTables();
+});
 
-  $(document).on("click", "#submitorder", function () {
-    $.fn.checkOrder();
-  });
+$(document).on("click", ".orderbutton", function () {
+  $.fn.prepareOrderForm();
+});
+
+$(document).on("click", "#submitorder", function () {
+  $.fn.checkOrder();
 });
 
