@@ -1,5 +1,5 @@
-from typing import List
 from decimal import Decimal
+from typing import List
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
