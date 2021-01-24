@@ -6,6 +6,10 @@
 
 // Normally. this would be in a database, but...
 
+
+/* Data */
+
+/* Optometrist Data Structures */
 class Optometrist {
   constructor(name, phoneNumber) {
     this.name = name;
@@ -21,6 +25,7 @@ const optometrists = [
 ];
 
 
+/* Contact Data Structures */
 class Contact {
   constructor(type, brand, style, price) {
     this.type = type;
@@ -44,6 +49,8 @@ const contacts = [
   new Contact('monthly', 'CooperVision', 'Biofininity', 52)
 ];
 
+
+/* State Data Structures */
 const states = [
   'AL', 'AK', 'AZ', 'AR', 'CA',
   'CO', 'CT', 'DE', 'FL', 'GA',
@@ -56,6 +63,7 @@ const states = [
   'SD', 'TN', 'TX', 'UT', 'VT',
   'VA', 'WA', 'WV', 'WI', 'WY'
 ];
+
 
 // Filter the contacts down to the correct type
 const dailies = contacts.filter(contact => contact.type == 'daily');
