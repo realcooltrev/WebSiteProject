@@ -7,8 +7,6 @@
 // Normally. this would be in a database, but...
 
 
-/* Data */
-
 /* Optometrist Data Structures */
 class Optometrist {
   constructor(name, phoneNumber) {
@@ -64,11 +62,6 @@ const states = [
   'VA', 'WA', 'WV', 'WI', 'WY'
 ];
 
-
-// Filter the contacts down to the correct type
-const dailies = contacts.filter(contact => contact.type == 'daily');
-const weeklies = contacts.filter(contact => contact.type == 'monthly');
-const monthlies = contacts.filter(contact => contact.type == "monthly");
 
 const askForPrescription = (prescriptionChoice) => {
   // Check if a user has a prescription from an optometrist
@@ -140,13 +133,13 @@ const askForPrescription = (prescriptionChoice) => {
 
     switch (contactType) {
       case "dailies":
-        chosenType = dailies;
+        chosenType = contacts.filter(contact => contact.type == 'daily');
         break;
       case "weeklies":
-        chosenType = weeklies;
+        chosenType = contacts.filter(contact => contact.type == 'weekly');
         break;
       case "monthlies":
-        chosenType = monthlies;
+        chosenType = contacts.filter(contact => contact.type == 'monthly');
         break;
       case "NULL":
         break;
