@@ -1,15 +1,3 @@
-from decimal import Decimal
-
-from pydantic import BaseModel
-
-
-class Contact(BaseModel):
-    schedule: str
-    brand: str
-    style: str
-    price: Decimal
-
-
 contacts = [
     {
         "schedule": "daily", "brand": "Acuvue", "style": "Moist", "price": 56
@@ -44,4 +32,25 @@ contacts = [
     {
         "schedule": "monthly", "brand": "CooperVision", "style": "Biofininity", "price": 52
     }
+]
+
+
+optometrists = [
+    {"name": "Pearle Vision", "phone_number": "8123329014"},
+    {"name": "Brinegar Eye Care", "phone_number": "8123397995"},
+    {"name": "Hoosier Eye Doctor", "phone_number": "8123332020"},
+    {"name": "Precision Eye Group", "phone_number": "8123322020"},
+]
+
+states = [
+    "AL", "AK", "AZ", "AR", "CA",
+    "CO", "CT", "DE", "FL", "GA",
+    "HI", "ID", "IL", "IN", "IA",
+    "KS", "KY", "LA", "ME", "MD",
+    "MA", "MI", "MN", "MS", "MO",
+    "MT", "NE", "NV", "NH", "NJ",
+    "NM", "NY", "NC", "ND", "OH",
+    "OK", "OR", "PA", "RI", "SC",
+    "SD", "TN", "TX", "UT", "VT",
+    "VA", "WA", "WV", "WI", "WY"
 ]

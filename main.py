@@ -5,9 +5,8 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from fake_db.contacts import Contact, contacts
-from fake_db.optometrists import Optometrist, optometrists
-from fake_db.states import states
+from fake_db import contacts, optometrists, states
+from models import Contact, Optometrist
 
 app = FastAPI()
 app.mount("/home", StaticFiles(directory="static", html=True), name="static")
