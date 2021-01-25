@@ -1,8 +1,14 @@
 from decimal import Decimal
+from enum import Enum
 from typing import List
 
 from pydantic import BaseModel, EmailStr, Field
 
+
+class ScheduleType(str, Enum):
+    daily = "daily"
+    weekly = "weekly"
+    monthly = "monthly"
 
 class Address(BaseModel):
     street_line_1: str
@@ -13,7 +19,7 @@ class Address(BaseModel):
 
 
 class Contact(BaseModel):
-    schedule: str
+    schedule: ScheduleType
     brand: str
     style: str
     price: Decimal
