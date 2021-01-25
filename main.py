@@ -1,7 +1,7 @@
 from decimal import Decimal
-from typing import List
+from typing import List, Optional
 
-from fastapi import FastAPI, status
+from fastapi import FastAPI, Query, status
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -12,14 +12,18 @@ app = FastAPI()
 app.mount("/home", StaticFiles(directory="static", html=True), name="static")
 
 
-@app.get("/contacts", response_model=List[Contact])
-async def get_all_contacts():
-    return contacts
-
-
-@app.get("/contacts/{schedule}", response_model=List[Contact])
-async def get_daily_contacts(schedule: ScheduleType):
-    return [contact for contact in contacts if contact['schedule'] == schedule]
+@app.get("/contacts/", response_model=List[Contact])
+async def get_contacts(
+    schedule: Optional[ScheduleType] = Query(
+        None,
+        title="Schedule type",
+        description="The schedule type to filter contacts by"
+    )
+):
+    if schedule:
+        return [contact for contact in contacts if contact['schedule'] == schedule]
+    else:
+        return contacts
 
 
 @app.get("/optometrists", response_model=List[Optometrist])
