@@ -1,12 +1,12 @@
 from decimal import Decimal
 from typing import List
 
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from fake_db import contacts, optometrists, states
-from models import Contact, Optometrist
+from models import Contact, Optometrist, Order
 
 app = FastAPI()
 app.mount("/home", StaticFiles(directory="static", html=True), name="static")
@@ -25,3 +25,8 @@ async def all_optometrists():
 @app.get("/states", response_model=List[str])
 async def all_states():
     return states
+
+
+@app.post("/order/submit", status_code=status.HTTP_201_CREATED)
+async def submit_order(order: Order):
+    return order
