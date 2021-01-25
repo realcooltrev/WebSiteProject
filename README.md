@@ -5,16 +5,16 @@ Originally, this was just a simple HTML page tied to some simple JavaScript (whi
 
 The currently implemented/planned code improvements to this application are:  
 - [x] Improved HTML formatting
-- [] Improved JavaScript formatting
-- [] Corrected HTML to meet HTML best practice standards (included accessibility improvements)
-- [] Corrected JavaScript to meet JavaScript best practice standards
-- [] Improve CSS so that site has a UI that has a more professional appearance
+- [ ] Improved JavaScript formatting
+- [ ] Corrected HTML to meet HTML best practice standards (included accessibility improvements)
+- [ ] Corrected JavaScript to meet JavaScript best practice standards
+- [ ] Improve CSS so that site has a UI that has a more professional appearance
 - [x] Create FastAPI backend
-- [] Store data in a database, instead of static data contained within code
-- [] Update JavaScript to use the Svelte framework
-- [] Change CSS to work with a modern CSS framework (such as Tailwind CSS)
-- [] Update website architecture to resemble a modern web store
-- [] Add unit tests
+- [ ] Store data in a database, instead of static data contained within code
+- [ ] Update JavaScript to use the Svelte framework
+- [ ] Change CSS to work with a modern CSS framework (such as Tailwind CSS)
+- [ ] Update website architecture to resemble a modern web store
+- [ ] Add unit tests
 
 # Installation
 Prequisites: Python 3.9.1
